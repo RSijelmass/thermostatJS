@@ -56,4 +56,20 @@ describe('thermostat', function() {
 			expect(thermostat.temperature).toEqual(20);
 		});
 	});
+	
+	describe('check energy usage', function() {
+		it('returns low-usage if temperature < 18C', function() {
+			thermostat.down(4);
+			expect(thermostat.checkEnergyUsage()).toEqual('low-usage')
+		});
+	it('returns medium-usage if temperature < 25C', function() {
+			expect(thermostat.checkEnergyUsage()).toEqual('medium-usage')
+		});
+	it('returns high-usage if temperature >= 25', function() {
+			thermostat.noPowerSaving();
+			thermostat.up(6)
+			expect(thermostat.checkEnergyUsage()).toEqual('high-usage')
+		});
+});
+
 });

@@ -25,6 +25,16 @@ var Thermostat = function() {
 	this.reset = function() {
 		this.temperature = 20;
 	};
+
+	this.checkEnergyUsage = function() {
+		if(this.temperature < 18) {
+			return 'low-usage';
+		} else if(this.temperature < 25) {
+			return 'medium-usage';
+		} else {
+			return 'high-usage';
+		};
+	};
 };
 
 /*thermostat = new Thermostat();
