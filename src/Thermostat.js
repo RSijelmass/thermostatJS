@@ -1,18 +1,22 @@
 var Thermostat = function() {
-	this.temperature = 20;
+	this.DEFAULT_TEMP = 20;
+	this.MAX_TEMP_NO_PS = 32;
+	this.MAX_TEMP_WITH_PS = 25;
+	this.MIN_TEMP = 10;
+	this.temperature = this.DEFAULT_TEMP;
 	this.isPowerSaving = true;
 
 	this.up = function(number) {
-		if(this.isPowerSaving && this.temperature + number > 25) {
+		if(this.isPowerSaving && this.temperature + number > this.MAX_TEMP_WITH_PS) {
 			throw('Maximum temperature is 25!');
-		} else if(!this.isPowerSaving && this.temperature + number > 32) {
+		} else if(!this.isPowerSaving && this.temperature + number > this.MAX_TEMP_NO_PS) {
 			throw('Maximum temperature is 32!');
 		};
 		this.temperature += number;
 	};
 
 	this.down = function(number) {
-		if(this.temperature - number < 10) {
+		if(this.temperature - number < this.MIN_TEMP) {
 			throw('Minimum temperature is 10!');
 		};
 		this.temperature -= number;
@@ -23,7 +27,7 @@ var Thermostat = function() {
 	};
 
 	this.reset = function() {
-		this.temperature = 20;
+		this.temperature = this.DEFAULT_TEMP;
 	};
 
 	this.checkEnergyUsage = function() {
