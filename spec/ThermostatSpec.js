@@ -31,11 +31,21 @@ describe('thermostat', function() {
 
 	describe('powersaving mode', function() {
 		it('default powersaving mode is on', function() {
-			expect(thermostat.ispowersaving).toEqual(true);
+			expect(thermostat.isPowerSaving).toEqual(true);
 		});
 
 		it('if on, maximum temperature is 25', function() {
 			expect(function() {thermostat.up(6)}).toThrow('Maximum temperature is 25!');
+		});
+
+		it('can be switched off', function() {
+			thermostat.noPowerSaving();
+			expect(thermostat.isPowerSaving).toEqual(false)
+		});
+
+		it('if off, maximum temperature is 32C', function() {
+			thermostat.noPowerSaving();
+			expect(function() {thermostat.up(13)}).toThrow('Maximum temperature is 32!');
 		});
 	});
 
