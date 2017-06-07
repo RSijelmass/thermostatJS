@@ -21,6 +21,10 @@ var Thermostat = function() {
 	this.noPowerSaving = function() {
 		this.isPowerSaving = false;
 	};
+
+	this.reset = function() {
+		this.temperature = 20;
+	};
 };
 
 /*thermostat = new Thermostat();

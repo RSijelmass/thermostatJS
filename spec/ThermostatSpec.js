@@ -49,4 +49,11 @@ describe('thermostat', function() {
 		});
 	});
 
+	describe('reset temperature', function() {
+		it('resets temperature to 20C', function() {
+			thermostat.up(3);
+			thermostat.reset();
+			expect(thermostat.temperature).toEqual(20);
+		});
+	});
 });
