@@ -39,13 +39,19 @@ describe('thermostat', function() {
 		});
 
 		it('can be switched off', function() {
-			thermostat.noPowerSaving();
+			thermostat.switchPowerSaving();
 			expect(thermostat.isPowerSaving).toEqual(false)
 		});
 
 		it('if off, maximum temperature is 32C', function() {
-			thermostat.noPowerSaving();
+			thermostat.switchPowerSaving();
 			expect(function() {thermostat.up(13)}).toThrow('Maximum temperature is 32!');
+		});
+		
+		it('when switched off, can be switched back on', function() {
+			thermostat.switchPowerSaving();
+			thermostat.switchPowerSaving();
+			expect(thermostat.isPowerSaving).toEqual(true);
 		});
 	});
 
@@ -66,7 +72,7 @@ describe('thermostat', function() {
 			expect(thermostat.checkEnergyUsage()).toEqual('medium-usage')
 		});
 	it('returns high-usage if temperature >= 25', function() {
-			thermostat.noPowerSaving();
+			thermostat.switchPowerSaving();
 			thermostat.up(6)
 			expect(thermostat.checkEnergyUsage()).toEqual('high-usage')
 		});

@@ -22,8 +22,8 @@ var Thermostat = function() {
 		this.temperature -= number;
 	};
 
-	this.noPowerSaving = function() {
-		this.isPowerSaving = false;
+	this.switchPowerSaving = function() {
+		this.isPowerSaving = !this.isPowerSaving;
 	};
 
 	this.reset = function() {
