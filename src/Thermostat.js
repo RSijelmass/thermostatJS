@@ -6,6 +6,9 @@ var Thermostat = function() {
 	};
 
 	this.down = function(number) {
+		if(this.temperature - number < 10) {
+			throw('Minimum temperature is 10!');
+		};
 		this.temperature -= number;
 	};
 };
