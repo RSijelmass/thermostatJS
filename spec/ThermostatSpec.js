@@ -17,4 +17,11 @@ describe('thermostat', function() {
 			expect(thermostat.temperature).toEqual(21);
 		});
 	});
+	
+	describe('decrease temperature', function() {
+		it('decreases temperature by 1C', function() {
+			thermostat.down(1)
+			expect(thermostat.temperature).toEqual(19);
+		});
+	});
 });

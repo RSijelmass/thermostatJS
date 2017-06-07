@@ -4,4 +4,8 @@ var Thermostat = function() {
 	this.up = function(number) {
 		this.temperature += number;
 	};
+
+	this.down = function(number) {
+		this.temperature -= number;
+	};
 };
