@@ -29,4 +29,14 @@ describe('thermostat', function() {
 		});
 	});
 
+	describe('powersaving mode', function() {
+		it('default powersaving mode is on', function() {
+			expect(thermostat.ispowersaving).toEqual(true);
+		});
+
+		it('if on, maximum temperature is 25', function() {
+			expect(function() {thermostat.up(6)}).toThrow('Maximum temperature is 25!');
+		});
+	});
+
 });

@@ -1,7 +1,11 @@
 var Thermostat = function() {
 	this.temperature = 20;
+	this.ispowersaving = true;
 
 	this.up = function(number) {
+		if(this.ispowersaving && this.temperature + number > 25) {
+			throw('Maximum temperature is 25!');
+		}
 		this.temperature += number;
 	};
 
