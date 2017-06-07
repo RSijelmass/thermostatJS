@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "jasmine": "^2.6.0",
-    "jasmine-spec-reporter": "^4.1.0"
+    "jasmine-spec-reporter": "^4.1.0",
+    "jquery": "^3.2.1"
   },
   "devDependencies": {},
   "scripts": {
